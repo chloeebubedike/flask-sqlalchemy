@@ -1,7 +1,7 @@
 from flask import render_template, request
 from application import app, db
 from application.forms import BasicForm
-from application.models import Person
+from application.models import Person, Car
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -33,6 +33,15 @@ def show_people():
         error = "There are no people to display"
         print(people)
     return render_template('people.html', people=people, message=error)
+
+@app.route('/cars', methods=['GET'])
+def show_cars():
+    error = ""
+    cars = Car.query.all()
+    if len(cars) == 0:
+        error = "There are no cars to display"
+        print(cars)
+    return render_template('cars.html', cars=cars, message=error, title="Car")
 
 
 @app.route('/people/<int:person_id>', methods=['GET'])

@@ -7,7 +7,7 @@
 <body>
 <div class='form'>
             <form method='POST' action=''>
-                <!-- provides CRSF protection, alongside secret key. Use on all POST forms -->
+                <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
                 {{ form.first_name.label }} {{ form.first_name }}
                 <br>
