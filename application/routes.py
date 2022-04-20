@@ -4,18 +4,30 @@ from application.forms import BasicForm
 from application.models import Person, Car
 
 
+# get display info and post because taking in info (could use for view your courses and booking page)
+# error message displayed if invalid values entered
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def register():
+    # create empty variable for error message
     error = ""
+    # save basic form class in the variable form
     form = BasicForm()
 
+    # if the request method is post
     if request.method == 'POST':
+        # save first name entered in the form in a variable
         first_name = form.first_name.data
+        # save last name entered in the form in a variable
         last_name = form.last_name.data
 
+        # if the length of the first or last name is zero show a prompt to tell the user to supply their names
         if len(first_name) == 0 or len(last_name) == 0:
             error = "Please supply both first and last name"
+        # if the length of both of the names is above 0
+        # create a person object with their details
+        # add the person to the database
+        # commit the change
         else:
             person = Person(first_name=first_name, last_name=last_name)
             db.session.add(person)
@@ -34,6 +46,7 @@ def show_people():
         print(people)
     return render_template('people.html', people=people, message=error)
 
+# simple get (could use to display course info)
 @app.route('/cars', methods=['GET'])
 def show_cars():
     error = ""
@@ -103,6 +116,7 @@ def delete_person(person_id):
     return render_template('people.html', people=people, message=error, title="People")
 
 
+# use to combine two different tables
 @app.route('/personandcars/<int:person_id>', methods=['GET'])
 def people_and_cars(person_id):
     error = ""

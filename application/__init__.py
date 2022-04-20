@@ -11,7 +11,7 @@ app = Flask(__name__)
 #  Object is Python classes
 #  Relational is MySQL
 # SQLAlchemy is the MAPPING layer between them
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:password@localhost/flask_team_a"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:@localhost/flask_team_a"
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://username:password@host/database_name"
 # app.config['SQLALCHEMY_DATABASE_URI']=('mysql+pymysql://' + getenv('MYSQL_USER') + ':' + getenv('MYSQL_PASSWORD') + '@' + getenv('MYSQL_HOST') + '/' + getenv('MYSQL_DB'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

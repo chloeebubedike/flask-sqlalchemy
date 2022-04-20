@@ -1,4 +1,5 @@
 from application import app
+from flask import Flask
 # import the ./application/routes.py file
 from application import routes
 
@@ -7,7 +8,7 @@ from application import routes
 
 if __name__ == '__main__':
      # app.run(debug=True, host='0.0.0.0')
-     app.run(debug=True)
+     app.run(debug=True, port=5010)
 
 
      # mvc Model View Controller
